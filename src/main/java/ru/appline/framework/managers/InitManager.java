@@ -14,7 +14,6 @@ public class InitManager {
         getDriver().manage().window().maximize();
         getDriver().manage().timeouts().implicitlyWait(Integer.parseInt(properties.getProperty(IMPLICITLY_WAIT)), TimeUnit.SECONDS);
         getDriver().manage().timeouts().pageLoadTimeout(Integer.parseInt(properties.getProperty(PAGE_LOAD_TIMEOUT)), TimeUnit.SECONDS);
-        getDriver().get(properties.getProperty(APP_URL));
     }
 
     public static void getBaseUrl() {

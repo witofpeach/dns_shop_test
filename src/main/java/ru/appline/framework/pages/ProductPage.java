@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import ru.appline.model.Product;
+import ru.appline.model.ProductList;
 
 import java.util.List;
 
@@ -31,7 +32,6 @@ public class ProductPage extends BasePage {
         productWarrantySelection.selectByVisibleText(warrantyOption);
         if (Long.parseLong(productCurrentPrice.getText().trim().replaceAll(" +", "")) != product.getPrice())
             product.setPriceWithWarranty(Long.parseLong(productCurrentPrice.getText().trim().replaceAll(" +", "")));
-        System.out.println(product.toString());
         return this;
     }
 
@@ -40,11 +40,10 @@ public class ProductPage extends BasePage {
         checkPresence(productCode);
         checkPresence(productCurrentPrice);
         product = new Product(productName.getText(), productCode.getText(), Long.parseLong(productCurrentPrice.getText().trim().replaceAll(" +", "")));
-        System.out.println(product.toString());
         return this;
     }
 
-    public ProductPage addToCart(List<Product> productList) {
+    public ProductPage addToCart(ProductList productList) {
         buttonAddToCart.click();
         productList.add(product);
         return this;

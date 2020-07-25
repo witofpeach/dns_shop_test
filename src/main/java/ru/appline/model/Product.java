@@ -6,6 +6,8 @@ public class Product {
     private long price;
     private long priceWithWarranty;
     private int quantity = 1;
+    private boolean removed = false;
+
 
     public Product(String name, String code, long price) {
         this.name = name;
@@ -52,6 +54,14 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
     }
 
     @Override

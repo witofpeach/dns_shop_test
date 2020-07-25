@@ -1,5 +1,6 @@
 package ru.appline.framework.managers;
 
+import ru.appline.framework.pages.CartPage;
 import ru.appline.framework.pages.MainPage;
 import ru.appline.framework.pages.ProductPage;
 import ru.appline.framework.pages.QueryResultPage;
@@ -12,6 +13,7 @@ public class PagesManager {
     MainPage mainPage;
     QueryResultPage queryResultPage;
     ProductPage productPage;
+    CartPage cartPage;
 
     private PagesManager() {
     }
@@ -42,6 +44,13 @@ public class PagesManager {
             productPage = new ProductPage();
         }
         return productPage;
+    }
+
+    public CartPage getCartPage() {
+        if (cartPage == null) {
+            cartPage = new CartPage();
+        }
+        return cartPage;
     }
 
 }

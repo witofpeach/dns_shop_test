@@ -1,14 +1,17 @@
 package ru.appline.framework.pages;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.appline.framework.managers.PagesManager;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static ru.appline.framework.managers.DriverManager.getDriver;
@@ -26,6 +29,12 @@ public class BasePage {
     public BasePage(){
         PageFactory.initElements(getDriver(), this);
     }
+
+    @FindBy(xpath = "//input[@placeholder='Поиск по сайту']")
+    WebElement inputSearch;
+
+    @FindBy(xpath = "//span[@class='cart-link__price']")
+    WebElement buttonCart;
 
     public boolean isElementPresent(WebElement element) {
         try {
@@ -71,7 +80,19 @@ public class BasePage {
         element.click();
     }
 
-    protected void scrollToElementJs(WebElement element) {
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    public QueryResultPage searchProductFromAnyPage(String query) {
+        fillField(inputSearch, query);
+        action.sendKeys(inputSearch, Keys.ENTER).build().perform();
+        return pagesManager.getQueryResultPage();
+    }
+
+    public CartPage getToCart() {
+        buttonCart.click();
+        return pagesManager.getCartPage();
+    }
+
+    public void slowClick(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        action.moveToElement(element).click(element).pause(Duration.ofSeconds(3)).build().perform();
     }
 }
