@@ -1,7 +1,6 @@
 package ru.appline.tests;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import ru.appline.framework.managers.PagesManager;
 
@@ -11,18 +10,15 @@ public class BaseTest {
 
     protected PagesManager pagesManager = PagesManager.getPagesManager();
 
-    @BeforeAll
-    public static void setUp() {
-        initFramework();
-    }
-
     @BeforeEach
-    public void refreshForParam() {
+    public void refreshForRepeated() {
+        initFramework();
         getBaseUrl();
     }
 
-    @AfterAll
-    public static void tearDown() {
+    @AfterEach
+    public void quitForRepeated() {
         quitFramework();
     }
+
 }

@@ -62,8 +62,8 @@ public class CartPage extends BasePage {
     public CartPage removeProductFromCart(String name, ProductList cart) {
         String fullName = cart.getFullNameByQuery(name);
         WebElement buttonRemove = getDriver().findElement(By.xpath("//a[contains(text(), '" + fullName + "')]//..//..//..//..//..//button[text()='Удалить']"));
-        slowClick(buttonRemove);
         cart.remove(name);
+        slowClick(buttonRemove, 2);
         return this;
     }
 
@@ -71,14 +71,14 @@ public class CartPage extends BasePage {
         String fullName = cart.getFullNameByQuery(name);
         WebElement buttonIncrementQuantity = getDriver().findElement(By.xpath("//a[contains(text(), '" + fullName + "')]//..//..//..//..//..//button[contains(@class, 'count-buttons__button_plus')]"));
         for (int i = 0; i < times; i++) {
-            slowClick(buttonIncrementQuantity);
+            slowClick(buttonIncrementQuantity, 3);
             cart.incrementQuantityByName(name);
         }
         return this;
     }
 
     public CartPage restoreRemovedProductToCart(ProductList cart) {
-        buttonRestore.click();
+        slowClick(buttonRestore, 2);
         for (WebElement productInCart : productsInCart) {
             cart.restoreProduct(productInCart.getText().toLowerCase());
         }

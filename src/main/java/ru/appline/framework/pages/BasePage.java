@@ -33,7 +33,7 @@ public class BasePage {
     @FindBy(xpath = "//input[@placeholder='Поиск по сайту']")
     WebElement inputSearch;
 
-    @FindBy(xpath = "//span[@class='cart-link__price']")
+    @FindBy(xpath = "//span[@class='cart-link__icon']")
     WebElement buttonCart;
 
     public boolean isElementPresent(WebElement element) {
@@ -91,8 +91,8 @@ public class BasePage {
         return pagesManager.getCartPage();
     }
 
-    public void slowClick(WebElement element) {
+    public void slowClick(WebElement element, int durationInSeconds) {
         wait.until(ExpectedConditions.visibilityOf(element));
-        action.moveToElement(element).click(element).pause(Duration.ofSeconds(3)).build().perform();
+        action.moveToElement(element).pause(Duration.ofSeconds(durationInSeconds)).click(element).pause(Duration.ofSeconds(durationInSeconds)).build().perform();
     }
 }

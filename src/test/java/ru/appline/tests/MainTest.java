@@ -1,12 +1,13 @@
 package ru.appline.tests;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import ru.appline.model.ProductList;
 
 
 public class MainTest extends BaseTest {
 
-    @Test
+    @RepeatedTest(1)
     public void test() {
 
         ProductList cart = new ProductList();

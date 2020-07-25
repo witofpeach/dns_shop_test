@@ -63,6 +63,9 @@
                 <version>2.22.2</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -Denv=chrome
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>

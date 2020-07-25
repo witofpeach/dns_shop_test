@@ -15,7 +15,7 @@ public class TestPropertiesManager {
         try {
             properties.load(new FileInputStream(
                     new File("src/main/resources/" +
-                            System.getProperty("env", "testing") + ".properties")));
+                            System.getProperty("env", "chrome") + ".properties")));
         } catch (IOException e) {
             e.printStackTrace();
         }
