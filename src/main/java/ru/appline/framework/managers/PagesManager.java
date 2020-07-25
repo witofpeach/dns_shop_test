@@ -4,7 +4,6 @@ import ru.appline.framework.pages.CartPage;
 import ru.appline.framework.pages.MainPage;
 import ru.appline.framework.pages.ProductPage;
 import ru.appline.framework.pages.QueryResultPage;
-import ru.appline.model.Product;
 
 public class PagesManager {
 
@@ -53,4 +52,7 @@ public class PagesManager {
         return cartPage;
     }
 
+    public static void nullPagesManeger() {
+        pagesManager = null;
+    }
 }

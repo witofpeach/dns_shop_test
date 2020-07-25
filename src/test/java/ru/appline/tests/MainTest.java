@@ -7,7 +7,7 @@ import ru.appline.model.ProductList;
 
 public class MainTest extends BaseTest {
 
-    @RepeatedTest(1)
+    @RepeatedTest(3)
     public void test() {
 
         ProductList cart = new ProductList();
